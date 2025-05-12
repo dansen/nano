@@ -1,0 +1,1 @@
+go run ./ gate --listen "127.0.0.1:34570" --gate-address "127.0.0.1:34590"
