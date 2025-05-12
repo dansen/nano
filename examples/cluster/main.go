@@ -15,20 +15,18 @@ import (
 	"github.com/lonng/nano/serialize/json"
 	"github.com/lonng/nano/session"
 	"github.com/pingcap/errors"
-	"github.com/urfave/cli"
+	"github.com/urfave/cli/v2"
 )
 
 func main() {
 	app := cli.NewApp()
 	app.Name = "NanoClusterDemo"
-	app.Author = "Lonng"
-	app.Email = "heng@lonng.org"
 	app.Description = "Nano cluster demo"
-	app.Commands = []cli.Command{
+	app.Commands = []*cli.Command{
 		{
 			Name: "master",
 			Flags: []cli.Flag{
-				cli.StringFlag{
+				&cli.StringFlag{
 					Name:  "listen,l",
 					Usage: "Master service listen address",
 					Value: "127.0.0.1:34567",
@@ -39,17 +37,17 @@ func main() {
 		{
 			Name: "gate",
 			Flags: []cli.Flag{
-				cli.StringFlag{
+				&cli.StringFlag{
 					Name:  "master",
 					Usage: "master server address",
 					Value: "127.0.0.1:34567",
 				},
-				cli.StringFlag{
+				&cli.StringFlag{
 					Name:  "listen,l",
 					Usage: "Gate service listen address",
 					Value: "",
 				},
-				cli.StringFlag{
+				&cli.StringFlag{
 					Name:  "gate-address",
 					Usage: "Client connect address",
 					Value: "",
@@ -60,12 +58,12 @@ func main() {
 		{
 			Name: "chat",
 			Flags: []cli.Flag{
-				cli.StringFlag{
+				&cli.StringFlag{
 					Name:  "master",
 					Usage: "master server address",
 					Value: "127.0.0.1:34567",
 				},
-				cli.StringFlag{
+				&cli.StringFlag{
 					Name:  "listen,l",
 					Usage: "Chat service listen address",
 					Value: "",
